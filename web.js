@@ -3,6 +3,10 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
+app.configure( function(){
+  app.use( express.static(__dirname+'/res') );
+});
+
 app.get('/', function(request, response) {
   var buf = fs.readFileSync( __dirname + '/index.html' )
   response.setHeader( 'Content-Type', 'text/html' );  
